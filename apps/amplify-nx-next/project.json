@@ -1,0 +1,62 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/amplify-nx-next",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/amplify-nx-next",
+        "outputPath": "dist/apps/amplify-nx-next"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/amplify-nx-next"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "amplify-nx-next:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "amplify-nx-next:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "amplify-nx-next:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "amplify-nx-next:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/amplify-nx-next"],
+      "options": {
+        "jestConfig": "apps/amplify-nx-next/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/amplify-nx-next/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}

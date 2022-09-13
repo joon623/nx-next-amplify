@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "amplify-nx-next": "apps/amplify-nx-next",
+    "amplify-nx-next-e2e": "apps/amplify-nx-next-e2e"
+  }
+}
